@@ -54,7 +54,7 @@ class MeterController extends Controller
             'meter_number'=>'required|unique:meters,meter_number|size:11',
             //'owner_phone_number'=>'required',
             'designation'=>'required|numeric|unique:meters',
-            'address'=>'required',
+            //'address'=>'required',
             'capacity'=>'required|numeric',
         ]);
 
@@ -69,7 +69,7 @@ class MeterController extends Controller
         $meter->meter_number = $request->meter_number;
         $meter->owner_phone_number =  "no user"; // $request->owner_phone_number;
         $meter->designation = $request->designation;
-        $meter->address = $request->address;
+        $meter->address = "no user";
         $meter->capacity = $request->capacity;
         $meter->more = "";
         $meter->available_units = 0;
@@ -78,7 +78,7 @@ class MeterController extends Controller
         $meter->tag_id = 1;
         $meter->power_consumed = 0;
         $meter->rated_current = $request->rated_current;
-        $meter->ip_address = $request->ip_address;
+        //$meter->ip_address = $request->ip_address;
 
         $meter->save();
 
@@ -159,6 +159,7 @@ class MeterController extends Controller
         $meter->power_consumed = 0;
 
         $meter->save();
+
         return ["message"=>"success"];
     }
 
@@ -168,7 +169,10 @@ class MeterController extends Controller
         $meter->shutdown_reason = 0;
         $meter->fraud_detected = 1;
 
+        MeterRequestController::queueCommand($meter->id, "00#000001#S#1");
+
         $meter->save();
+
         return ["message"=>"success"];
     }
 }

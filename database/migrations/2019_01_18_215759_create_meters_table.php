@@ -48,7 +48,7 @@ class CreateMetersTable extends Migration
              */
 
             $table->double("rated_current");
-            $table->string("ip_address");
+            //$table->string("ip_address");
 
             $table->timestamps();
         });

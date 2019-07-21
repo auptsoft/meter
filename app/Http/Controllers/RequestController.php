@@ -7,9 +7,30 @@ use App\Meter;
 use App\Property;
 use Carbon\Carbon;
 use App\PowerConsumed;
+use GuzzleHttp\Client as Guzzle;
 
 class RequestController extends Controller
 {
+
+    public function sendGetRequest(Request $request) {
+        $url = $request->input('url');
+
+        //return $url;
+
+        $guzzleClient = new Guzzle(["base_url"=>"http://localhost"]);
+
+        return $guzzleClient->request("get", $url)->getBody();
+        
+        // $response = $guzzleClient->request('GET', "$path");
+        // return $response->getBody();
+
+        // $guzzleClient = new Guzzle(['base_uri'=>'https://fcm.googleapis.com', 'headers'=>['Content-Type'=>'application/json', 'Authorization'=>'key=AIzaSyC8XTjj6hUY_EKGMMykiFFXHPczWT3pdj8']]);
+        //         $body = $notification; //json_encode($notification);
+        //         $response = $guzzleClient->request('POST', '/fcm/send',
+        //                         [RequestOptions::JSON=>$notification]
+        //                         //['form_params'=>$notification]
+        //                     );
+    }
     public function handleRequest(Request $request) {
         $data = $request->input('data');
 

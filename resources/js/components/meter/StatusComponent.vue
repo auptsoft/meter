@@ -1,6 +1,8 @@
 <template>
     <div>
+        <div> State: {{ meter.state }} </div>
         <mdb-alert :color="alertColor"> {{message}} </mdb-alert>
+        <div> Last Update: {{ meter.lastUpdate }} </div>
     </div>
 </template>
 
@@ -12,6 +14,10 @@ export default {
     },
 
     computed: {
+        meter() {
+            return this.$store.state.meter;
+        },
+
         alertColor() {
             let reason = this.$store.state.meter.shutdown_reason;
             if(reason==1 || reason == 5) {
@@ -37,7 +43,7 @@ export default {
                 return "Meter Shutdown by ADMIN";
             } 
              else {
-                return "Meter is working";        
+                return "";        
             }
         }
     }

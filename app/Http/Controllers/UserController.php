@@ -45,6 +45,7 @@ class UserController extends Controller
 
         $meter = Meter::where([["meter_number", "=", $request->meter_number]])->get()->first();
         $meter->owner_phone_number = $request->phone_number;
+        $meter->address = $request->address;
         $meter->save();
         
         $roleUser = new RoleUser;

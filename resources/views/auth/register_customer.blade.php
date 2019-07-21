@@ -40,14 +40,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="meter_number" class="col-md-4 col-form-label text-md-right">{{ 'Meter Number' }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ 'Address' }}</label>
 
                             <div class="col-md-6">
-                                <input id="meter_number" type="text" class="form-control{{ $errors->has('meter_number') ? ' is-invalid' : '' }}" name="meter_number" value="{{ old('meter_number') }}" required >
+                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required >
 
-                                @if ($errors->has('meter_number'))
+                                @if ($errors->has('address'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('meter_number') }}</strong>
+                                        <strong>{{ $errors->first('address') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -62,6 +62,20 @@
                                 @if ($errors->has('phone_number'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="meter_number" class="col-md-4 col-form-label text-md-right">{{ 'Meter Number' }}</label>
+
+                            <div class="col-md-6">
+                                <input id="meter_number" type="text" class="form-control{{ $errors->has('meter_number') ? ' is-invalid' : '' }}" name="meter_number" value="{{ old('meter_number') }}" required >
+
+                                @if ($errors->has('meter_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('meter_number') }}</strong>
                                     </span>
                                 @endif
                             </div>

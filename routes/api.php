@@ -65,3 +65,9 @@ Route::get('/meter/powerConsumption/{meter_id}', "PowerConsumedController@forMet
 Route::get('/meter/{id}/shutdown', "MeterController@shutdown");
 Route::get('/meter/{id}/start', "MeterController@start");
 
+Route::post('/http/get', "RequestController@sendGetRequest");
+
+Route::get('/test', function(Request $request){
+    //return "hello";
+    return $request;
+});

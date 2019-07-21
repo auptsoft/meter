@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mdb-btn color="primary" @click.native="showModal = true">Consumption History</mdb-btn>
+      <mdb-btn size="sm" color="primary" @click.native="showModal = true">Consumption History</mdb-btn>
       <mdb-modal :show="showModal" @close="showModal = false" scrollable>
         <mdb-modal-header>
           <mdb-modal-title>Power Consumption</mdb-modal-title>

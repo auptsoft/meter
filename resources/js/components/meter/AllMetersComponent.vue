@@ -44,11 +44,17 @@ export default {
     },
 
     mounted() {
-        let complete = (status, data) => {
+        setInterval(this.getAllMeters, 4000);
+    },
+
+    methods: {
+        getAllMeters() {
+            let complete = (status, data) => {
             console.log(status);
             console.log(data)
+            }
+            this.$store.commit("getAllMeters", {complete});
         }
-        this.$store.commit("getAllMeters", {complete});
     }
 }
 </script>
