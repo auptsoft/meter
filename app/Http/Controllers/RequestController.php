@@ -145,8 +145,6 @@ class RequestController extends Controller
                 
                 $unitConsumed = $this->computePowerConsumed($meter, $powerConsumed, $billing_rate);
                 
-               
-
                 $phaseArray = [$redPhaseActive, $bluePhaseActive, $yellowPhaseActive];
 
                 $isShutdown = 1;
@@ -229,6 +227,96 @@ class RequestController extends Controller
         } else if ($type == "A") {
 
         }
+    }
+
+    public function gate(Request $request) {
+
+        $data = $request->input('data');
+        //return $data;
+        $dataArray = explode('>', $data);
+
+            $designation = intval($dataArray[1]);
+            $voltage = intval($dataArray[2])/10;
+            $current = intval($dataArray[3])/1000;
+            $power = intval($dataArray[4])/10;
+            $energy = intval($dataArray[5])/10;
+            $frequency = intval($dataArray[6])/10;
+            $availbleUnit = intval($dataArray[7])/10;
+            
+            $redPhaseActive = intval($dataArray[8]);
+            $yellowPhaseActive = intval($dataArray[9]);
+            
+            $bluePhaseActive = intval($dataArray[10]);          
+            $faultState = intval($dataArray[11]);
+             // $availbleUnit;
+            $currentPhase = intval($dataArray[12]);
+
+            //return $current;
+
+            $meter = Meter::where('designation', $designation)->get()->first();
+            if ($meter) {
+                
+                //$billing_rate = (float)PropertyController::getProperty('billing_rate')->value;
+                
+                //$unitConsumed = $this->computePowerConsumed($meter, $powerConsumed, $billing_rate);
+                
+                $phaseArray = [$redPhaseActive, $bluePhaseActive, $yellowPhaseActive];
+
+                $isShutdown = 1;
+                $shutdownReason = $faultState;
+
+                //$currentAvailableUnit = (float)$meter->available_units - (float)$unitConsumed;
+                
+                $shutdownReason = 1;
+
+                if ($faultState != 1) {
+                    $isShutdown = 2;
+                    $shutdownReason = 5;
+                } 
+                if ($faultState == 2) {
+                    $fraudDetected = 2;
+                }
+
+               
+                
+
+                $meter->available_units = $availbleUnit;
+
+                $meter->current = $current;
+                $meter->voltage = $voltage;
+                $meter->power_consumed = $power;
+                $meter->random = rand(1000, 9999)."";
+                 
+                $meter->red_phase_active = $redPhaseActive;
+                $meter->blue_phase_active = $bluePhaseActive;
+                
+                $meter->yellow_phase_active = $yellowPhaseActive;
+                
+                $meter->fraud_detected = $fraudDetected;
+                return $current;
+                $meter->current_phase = $currentPhase;
+                $meter->is_shutdown = $isShutdown;
+                $meter->shutdown_reason = $faultState;
+                //$meter->save();
+
+               
+
+                $powCon = new PowerConsumed;
+                $powCon->power_consumed = $power;
+                $powCon->current = $current;
+                $powCon->voltage = $voltage;
+                $powCon->power_factor = 0;
+                $powCon->frequency = $frequency;
+                $powCon->meter_id = $meter->id;
+
+                $powCon->save();
+
+                return "OK";
+                
+                //return $this->meterStatus($meter);
+            } else {
+                echo 'E';
+            }
     }
 
     public function computePowerConsumed($meter, $currentPowerConsumption, $billing_rate) {

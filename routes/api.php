@@ -52,7 +52,8 @@ Route::delete('/user', function(Request $request){
 
 Route::get('/meter', "MeterController@index");
 
-Route::post('/gateway', 'RequestController@gateway');
+Route::post('/gatewa', 'RequestController@gateway');
+Route::post('/gateway', 'RequestController@gate');
 
 Route::get('/test', function() {
     return "new";
