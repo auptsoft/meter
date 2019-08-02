@@ -72,3 +72,5 @@ Route::get('/test', function(Request $request){
     //return "hello";
     return $request;
 });
+
+Route::get('/meter/queueOnOff/{id}/{onOff}', "MeterRequestController@shutdownCommand");

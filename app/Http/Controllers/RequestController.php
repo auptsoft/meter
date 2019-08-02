@@ -232,7 +232,7 @@ class RequestController extends Controller
     public function gate(Request $request) {
 
         $data = $request->input('data');
-        //return $data;
+        //
         $dataArray = explode('>', $data);
 
             $designation = intval($dataArray[1]);
@@ -248,10 +248,10 @@ class RequestController extends Controller
             
             $bluePhaseActive = intval($dataArray[10]);          
             $faultState = intval($dataArray[11]);
-             // $availbleUnit;
+            //return $data;
             $currentPhase = intval($dataArray[12]);
 
-            //return $current;
+           
 
             $meter = Meter::where('designation', $designation)->get()->first();
             if ($meter) {
@@ -268,6 +268,7 @@ class RequestController extends Controller
                 //$currentAvailableUnit = (float)$meter->available_units - (float)$unitConsumed;
                 
                 $shutdownReason = 1;
+                $fraudDetected = 1;
 
                 if ($faultState != 1) {
                     $isShutdown = 2;
@@ -278,7 +279,7 @@ class RequestController extends Controller
                 }
 
                
-                
+                 
 
                 $meter->available_units = $availbleUnit;
 
@@ -291,26 +292,35 @@ class RequestController extends Controller
                 $meter->blue_phase_active = $bluePhaseActive;
                 
                 $meter->yellow_phase_active = $yellowPhaseActive;
-                
-                $meter->fraud_detected = $fraudDetected;
-                return $current;
                 $meter->current_phase = $currentPhase;
                 $meter->is_shutdown = $isShutdown;
                 $meter->shutdown_reason = $faultState;
-                //$meter->save();
+                $meter->more = $energy;
 
                
+                $meter->fraud_detected = $fraudDetected;
+                // return $current;
+                
+                $meter->save();
+
+                //return $currentPhase;
 
                 $powCon = new PowerConsumed;
                 $powCon->power_consumed = $power;
                 $powCon->current = $current;
                 $powCon->voltage = $voltage;
-                $powCon->power_factor = 0;
+                $powCon->power_factor = $energy;
                 $powCon->frequency = $frequency;
                 $powCon->meter_id = $meter->id;
 
                 $powCon->save();
 
+                $mr = $meter->requests()->get()->first();
+                if ($mr) {
+                    $resp = $mr->command;
+                    $mr->delete();
+                    return $resp;
+                }
                 return "OK";
                 
                 //return $this->meterStatus($meter);

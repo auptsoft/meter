@@ -7,13 +7,16 @@
             </mdb-card-header>
             <mdb-card-body>
               <span> Power Consumption: </span>
-              <span>{{currentPowerConsumption}} </span>
+              <span>{{currentPowerConsumption}}W </span>
+              <hr />
+              <span> Energy: </span>
+              <span>{{meter.more}} </span>
               <hr />
                <span> Current: </span>
-              <span>{{meter.current}} </span>
+              <span>{{meter.current}}A </span>
               <hr />
                <span> Voltage: </span>
-              <span>{{meter.power.voltage}} </span>
+              <span>{{meter.power.voltage}}V </span>
               <hr />
                <!-- <span> Frequency: </span>
               <span>{{meter.power.frequency}} </span>
@@ -23,6 +26,7 @@
               <hr /> -->
               <span> Available Unit: </span>
               <span>{{meter.available_units}} </span>
+              
             </mdb-card-body>
         </mdb-card>
     </div>

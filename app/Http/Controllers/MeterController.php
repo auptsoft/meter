@@ -158,6 +158,9 @@ class MeterController extends Controller
         $meter->shutdown_reason = 5;
         $meter->power_consumed = 0;
 
+        $mrC = new MeterRequestController();
+        $mrC->shutdownCommand($id, 0);
+
         $meter->save();
 
         return ["message"=>"success"];
@@ -169,7 +172,9 @@ class MeterController extends Controller
         $meter->shutdown_reason = 0;
         $meter->fraud_detected = 1;
 
-        MeterRequestController::queueCommand($meter->id, "00#000001#S#1");
+        //MeterRequestController::queueCommand($meter->id, "00#000001#S#1");
+        $mrC = new MeterRequestController();
+        $mrC->shutdownCommand($id, 1);
 
         $meter->save();
 

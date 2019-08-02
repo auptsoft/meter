@@ -20,24 +20,24 @@ export default {
 
         alertColor() {
             let reason = this.$store.state.meter.shutdown_reason;
-            if(reason==1 || reason == 5) {
-                return "danger";
-            } else if (reason==2 || reason == 3 || reason == 4) {
-                return "warning";
-            } else {
+            if(reason==1 ) {
                 return "success";
+            } /*else if (reason==2 || reason == 3 || reason == 4) {
+                return "danger";
+            } */ else {
+                return "danger";
             }                
         },
 
         message() {
             let reason = this.$store.state.meter.shutdown_reason;
             if(reason == 1) {
-                return "Meter shutdown. METER TAMPERED. Contact base station to turn on your meter";
+                return this.meter.state;
             } else if (reason == 2) {
-                return "Meter shutdown. Unit exhuasted. Kindly recharge meter";
-            }else if (reason == 3) {
+               return "Meter shutdown. METER TAMPERED. Contact base station to turn on your meter";
+            }/*else if (reason == 3) {
                 return "Current phase down. Kindly use App to change phase";
-            } else if (reason == 4) {
+            }*/ else if (reason == 4) {
                 return "Meter shutdown due to OVERLOAD. Kindly reduce load to turn on meter";
             } else if (reason == 5) {
                 return "Meter Shutdown by ADMIN";

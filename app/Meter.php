@@ -47,7 +47,8 @@ class Meter extends Model
         if($pc->count() < 1) {
             return "No update yet";
         } else {
-            return $pc->last()->updated_at;
+            return $pc->last()->updated_at->toRfc1123String();
+            //Carbon::now()->to
         }
     }
 }

@@ -43,11 +43,11 @@ export default {
             label: "Current",
             field: "current"
           },
-          /*{
-            label: "Power Factor",
+          {
+            label: "Energy",
             field: "power_factor"
           },
-          {
+          /*{
             label: "Frequency",
             field: "frequency"
           }, */

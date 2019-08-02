@@ -15,7 +15,7 @@
   					<button class="btn btn-success btn-sm" >Recharge </button>
 				</a>
                 <div> {{ meter.state }} </div>
-                <div>Last updated: {{ meter.lastUpdated }} </div>
+                <div>Last updated: {{ meter.lastUpdate }} </div>
 			</div>
 			</a>
 		</div>

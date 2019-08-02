@@ -31,6 +31,7 @@ class RechargeController extends Controller
         
         if ($this->recharge($pin, $meter)) {
             return redirect("/meter"); // back();
+            
         } else {
             return redirect("/home");
         }    
@@ -47,9 +48,14 @@ class RechargeController extends Controller
             $meter->status = "Just Recharged";
 
             $voucher->used = true;
+            
+            $mrC = new MeterRequestController();
+            $mrC->rechargeCommand($meter->id, $worth);
+            
             $voucher->save();
 
             $meter->save();
+
             return $worth;
         }
         return false;
