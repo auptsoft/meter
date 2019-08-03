@@ -9,13 +9,16 @@
 					<br />
 					<span class="meter-address">{{ meter.address}} </span>
 					<br />
-					<span class="meter-status">Capacity: {{ meter.capacity}} </span>
+					<span class="meter-status">Capacity (W): {{ meter.capacity}} </span>
+                    <br />
+                    <span class="meter-status">Current Rating (A): {{ meter.rated_current}} </span>
 				</p>
-				<a :href="'staff_recharge/'+meter.id">
-  					<button class="btn btn-success btn-sm" >Recharge </button>
-				</a>
+				
                 <div> {{ meter.state }} </div>
                 <div>Last updated: {{ meter.lastUpdate }} </div>
+                <a :href="'staff_recharge/'+meter.id">
+  					<button class="btn btn-success btn-sm" >Recharge </button>
+				</a>
 			</div>
 			</a>
 		</div>

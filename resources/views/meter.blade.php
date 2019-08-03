@@ -164,10 +164,10 @@ use App\Http\Controllers\PowerConsumedController;
         <hr />
 
         <div>
-           <!-- <span>Power Comsumed: </span>
+           <span>Current Rating: </span>
            <span><b>
-                {{ $meter->power_consumed }}
-            </b></span> -->
+                {{ $meter->rated_current }}
+            </b></span>
         </div>
         <hr />
        <div>

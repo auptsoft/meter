@@ -63,7 +63,7 @@
                                     <a class="nav-link" href="{{ route('my_meter') }}">{{ __('My Meter') }}</a>
                                 </li>   
                                 <li class="{{Route::currentRouteName()==='customer_recharge' ? 'nav-item-active':'nav-item'}}">
-                                    <a class="nav-link" href="{{ url('customer_recharge ') }}">{{ __('Recharge') }}</a>
+                                    <a class="nav-link" href="{{ url('customer_recharge/'.Auth::user()->meter()->get()->first()->id) }}">{{ __('Recharge') }}</a>
                                 </li>   
                             @endif
 
