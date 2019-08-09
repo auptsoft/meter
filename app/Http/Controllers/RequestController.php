@@ -239,9 +239,9 @@ class RequestController extends Controller
             $voltage = intval($dataArray[2])/10;
             $current = intval($dataArray[3])/1000;
             $power = intval($dataArray[4])/10;
-            $energy = intval($dataArray[5])/10;
+            $energy = intval($dataArray[5])/1000;
             $frequency = intval($dataArray[6])/10;
-            $availbleUnit = intval($dataArray[7])/10;
+            $availbleUnit = intval($dataArray[7])/100;
             
             $redPhaseActive = intval($dataArray[8]);
             $yellowPhaseActive = intval($dataArray[9]);
