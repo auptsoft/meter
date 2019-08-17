@@ -1,8 +1,9 @@
 <template>
     <div>
         <div class="item" > 
-                <div v-if="redPhaseState==2" class="item-image" style="background-image:url('../storage/bad sign.jpg')"  > </div>
-                <div v-if="redPhaseState==1" class="item-image" style="background-image:url('../storage/good sign.jpg')" > 
+               <div v-if="meter.state=='Meter is active'">
+                    <div v-if="redPhaseState==2" class="item-image" style="background-image:url('../storage/bad sign.jpg')"  > </div>
+                    <div v-if="redPhaseState==1" class="item-image" style="background-image:url('../storage/good sign.jpg')" > </div>
       	            <!-- <img src="{{ asset('') }}"/> -->
 	            </div>
      	        <div>
@@ -13,10 +14,12 @@
         </div>
         
          <div class="item" > 
-                <div v-if="yellowPhaseState==2" class="item-image" style="background-image:url('../storage/bad sign.jpg')"  > </div>
-                <div v-if="yellowPhaseState==1" class="item-image" style="background-image:url('../storage/good sign.jpg')" > 
+                <div v-if="meter.state=='Meter is active'">
+                    <div v-if="yellowPhaseState==2" class="item-image" style="background-image:url('../storage/bad sign.jpg')"  > </div>
+                    <div v-if="yellowPhaseState==1" class="item-image" style="background-image:url('../storage/good sign.jpg')" > 
       	            <!-- <img src="{{ asset('') }}"/> -->
 	            </div>
+                </div>
      	        <div>
 	                <h2  class="item-title yellow-title" > YELLOW PHASE </h2>
 	                <p v-if="yellowPhaseState==2" class="item-text error-text " > This phase is down </p>
@@ -24,10 +27,12 @@
 	            </div>
         </div>
          <div class="item" > 
+             <div v-if="meter.state=='Meter is active'">
                 <div v-if="bluePhaseState==2" class="item-image" style="background-image:url('../storage/bad sign.jpg')"  > </div>
                 <div v-if="bluePhaseState==1" class="item-image" style="background-image:url('../storage/good sign.jpg')" > 
       	            <!-- <img src="{{ asset('') }}"/> -->
 	            </div>
+             </div>
      	        <div>
 	                <h2  class="item-title blue-title" > BLUE PHASE </h2>
 	                <p v-if="bluePhaseState==2" class="item-text error-text " > This phase is down </p>
@@ -50,6 +55,10 @@ export default {
         yellowPhaseState() {
             //window.meterState.yellow_phase_active=1;
             return window.meterState.yellow_phase_active;
+        },
+
+        meter() {
+            return this.$store.state.meter;
         }
     }
 }

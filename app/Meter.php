@@ -34,7 +34,7 @@ class Meter extends Model
             return "Meter not started";
         } else {
             $last = $pc->last();
-            if (Carbon::now()->diffInMinutes($last->updated_at) > 5) {
+            if (Carbon::now()->diffInSeconds($last->updated_at) > 30) {
                 return "Meter may be shutdown or faulty";
             } else {
                 return "Meter is active";

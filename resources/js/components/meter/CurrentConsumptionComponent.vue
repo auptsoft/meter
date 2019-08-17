@@ -56,7 +56,7 @@ import { mdbLineChart, mdbCard, mdbCardHeader, mdbCardBody} from "mdbvue";
                         labels:  this.$store.state.powerConsumptionTime,
                         datasets: [{
                             label: "Present Power consumption",
-                            data: this.$store.state.powerConsumption,
+                            data: this.meter.state=="Meter is active" ? this.$store.state.powerConsumption : [],
                             backgroundColor: "#dee",
                             borderWidth: 0.7,
                             borderColor: "#ddd"
