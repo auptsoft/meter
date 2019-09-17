@@ -20,7 +20,7 @@ export default {
 
         alertColor() {
             let reason = this.$store.state.meter.shutdown_reason;
-            if(reason==1 ) {
+            if(reason==0 ) {
                 return "success";
             } /*else if (reason==2 || reason == 3 || reason == 4) {
                 return "danger";
@@ -31,9 +31,9 @@ export default {
 
         message() {
             let reason = this.$store.state.meter.shutdown_reason;
-            if(reason == 1) {
+            if(reason == 0) {
                 return this.meter.state;
-            } else if (reason == 2) {
+            } else if (reason == 1) {
                return "Meter shutdown. METER TAMPERED. Contact base station to turn on your meter";
             }/*else if (reason == 3) {
                 return "Current phase down. Kindly use App to change phase";

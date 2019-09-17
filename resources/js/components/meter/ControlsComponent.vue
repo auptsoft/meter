@@ -4,11 +4,11 @@
           <mdb-card-body>
             <mdb-card-title>Controls</mdb-card-title>
             <div v-if="isLoading==false">
-             <mdb-btn v-if="isShutdown==1" @click="shutdown()" color="danger" size="sm">Shutdown</mdb-btn>
-             <mdb-btn v-if="isShutdown==2" @click="start()" color="success" size="sm">Turn on</mdb-btn>
+             <mdb-btn v-if="meter.shutdown_reason == 0" @click="shutdown()" color="danger" size="sm">Shutdown</mdb-btn>
+             <mdb-btn v-else @click="start()" color="success" size="sm">Turn on</mdb-btn>
             </div>
             <mdb-alert v-if="isLoading==true" color="primary"> loading... </mdb-alert>
-            <mdb-btn v-if="fraudDetected==2" color="danger"> Meter Tampared </mdb-btn>
+            <mdb-btn v-if="meter.shutdown_reason == 1" color="danger"> Meter Tampared </mdb-btn>
           </mdb-card-body>
         </mdb-card>
     </div>
@@ -25,6 +25,10 @@ export default {
       }, 
       fraudDetected() {
         return window.meterState.fraud_detected;
+      },
+
+      meter() {
+        return this.$store.state.meter;
       }
     },
 
@@ -37,19 +41,20 @@ export default {
       shutdown() {
         //alert("shutdown");
         this.isLoading = true;
-        axios.get("/meter/public/api/meter/"+window.meter_id+"/shutdown")
+        axios.get("/meter/public/api/meter/queueOnOff/"+window.meter_id+"/1")
         .then((response)=> {
+          this.isLoading = false;
           let data = response.data;
           console.log(data);
           if (data.message && data.message=="success") {
             window.meterState.is_shutdown = true;
           }
-          this.isLoading = false;
+          
         });
       },
       start() {
         this.isLoading = true;
-        axios.get("/meter/public/api/meter/"+window.meter_id+"/start")
+        axios.get("/meter/public/api/meter/queueOnOff/"+window.meter_id+"/0")
         .then((response)=> {
           let data = response.data;
           console.log(data);
