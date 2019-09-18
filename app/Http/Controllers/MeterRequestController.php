@@ -32,7 +32,7 @@ class MeterRequestController extends Controller
 
     public function rechargeCommand($meter_id, int $amount) {
         $meter = Meter::find($meter_id);
-        $out = MeterRequestController::appendZeros("".($amount*10), 6);
+        $out = MeterRequestController::appendZeros("".($amount*100), 6);
         if($meter) {
             $degn = $meter->designation;
             $d = MeterRequestController::appendZeros($degn."", 5);
