@@ -29,6 +29,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = [
+        'meter',
+    ];
+
 
     public function roles() {
         return $this->belongsToMany('App\Role');
@@ -36,5 +40,9 @@ class User extends Authenticatable
 
     public function meter() {
         return $this->hasOne('App\Meter', 'meter_number', 'meter_number');
+    }
+
+    public function getMeterAttribute() {
+        return $this->meter()->get()->first();
     }
 }

@@ -29,6 +29,16 @@ import StatusComponent from "./components/meter/StatusComponent";
 import MeterItemComponent from "./components/meter/MeterItemComponent";
 import MeterListComponent from "./components/meter/MeterListComponent";
 import AllMetersComponent from "./components/meter/AllMetersComponent";
+
+import AllCustomersComponent from "./components/meter/AllCustomersComponent";
+import AllStaffs from "./components/meter/AllStaffs";
+import CustomerForm from "./components/meter/CustomerForm";
+import StaffForm from "./components/meter/StaffForm";
+
+import { mdbContainer, mdbRow, mdbCol, mdbBtn, mdbIcon,
+    mdbCard, mdbCardHeader, mdbCardBody, mdbCardFooter, mdbCardAvatar, mdbModal, mdbModalBody, mdbModalFooter, mdbModalTitle, mdbModalHeader, mdbInput } from "mdbvue";
+
+
 //import {mdbBtn} from 'mdbvue'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -45,6 +55,33 @@ Vue.component('status-component', StatusComponent);
 Vue.component('meter-item-component', MeterItemComponent);
 Vue.component('meter-list-component', MeterListComponent);
 Vue.component('all-meters-component', AllMetersComponent);
+
+Vue.component('all-customers-component', AllCustomersComponent);
+Vue.component('all-staffs-component', AllStaffs);
+Vue.component('customer-form-component', CustomerForm);
+Vue.component('staff-form-component', StaffForm);
+
+Vue.component('mdb-container', mdbContainer);
+Vue.component('mdb-row', mdbRow);
+Vue.component('mdb-col', mdbCol);
+Vue.component('mdb-btn', mdbBtn);
+Vue.component('mdb-icon', mdbIcon);
+
+Vue.component('mdb-card', mdbCard);
+Vue.component('mdb-card-header', mdbCardHeader);
+Vue.component('mdb-card-body', mdbCardBody);
+Vue.component('mdb-card-footer', mdbCardFooter);
+Vue.component('mdb-card-avatar', mdbCardAvatar);
+
+Vue.component('mdb-modal', mdbModal);
+Vue.component('mdb-modal-header', mdbModalHeader);
+Vue.component('mdb-modal-body', mdbModalBody);
+Vue.component('mdb-modal-footer', mdbModalFooter);
+Vue.component('mdb-modal-title', mdbModalTitle);
+
+Vue.component('mdb-input', mdbInput);
+
+
 //Vue.component('mdb-btn', mdbBtn);
 
 /**

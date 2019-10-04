@@ -74,7 +74,7 @@
                             <form method="post" action="{{ route('deleteVoucher', $voucher->id) }} ">
                                 @csrf
                                 <input type="text" name="id" value="{{ $voucher->id }}" style="display:none" />
-                                <input type="submit" name="delete" class="btn btn-primary" value="Delete" /> 
+                                <input type="submit" name="delete" class="btn btn-primary btn-sm" value="Delete" /> 
                             </form>
                         </div>
                     @endforeach
@@ -101,7 +101,7 @@
                             <form method="post" action="{{ route('deleteVoucher', $voucher->id) }} ">
                                 @csrf
                                 <input type="text" name="id" value="{{ $voucher->id }}" style="display:none" />
-                                <input type="submit" name="delete" class="btn btn-primary" value="Delete" /> 
+                                <input type="submit" name="delete" class="btn btn-primary btn-sm" value="Delete" /> 
                             </form>
                         </div>
                     @endforeach
@@ -138,7 +138,7 @@
              
              <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                    <input name="generate_pins" type="submit" class="btn btn-primary" value="Generate Pins" />
+                    <input name="generate_pins" type="submit" class="btn btn-primary btn-sm" value="Generate Pins" />
                 </div>
             </div>
         </form>

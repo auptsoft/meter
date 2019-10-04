@@ -13,7 +13,10 @@ let state = {
     meter: { power: {}},
 
     allMeters: [],
-    filteredMeters: []
+    filteredMeters: [],
+
+    allCustomers: [],
+    allStaffs:[],
 }
 
 let mutations = {
@@ -70,10 +73,85 @@ let mutations = {
 
     filterMeters(state, {complete}) {
         
+    },
+
+    getAllCustomers(state, {complete=f=>f}) {
+        axios.request({
+            method: "get",
+            url: "/meter/public/api/all_customers",
+        }).then((response)=> {
+            let responseData = response.data;
+            if (responseData.message == "success") {
+                state.allCustomers = responseData.data;
+            }
+            complete(responseData.message, responseData.data);
+        }).catch((error)=>{
+            complete("error", error);
+        })
+    },
+
+    getAllStaffs(state, {complete=f=>f}) {
+        axios.request({
+            method: "get",
+            url: "/meter/public/api/all_staffs",
+        }).then((response)=> {
+            let responseData = response.data;
+            if (responseData.message == "success") {
+                state.allStaffs = responseData.data;
+            }
+            complete(responseData.message, responseData.data);
+        }).catch((error)=>{
+            complete("error", error);
+        })
+    },
+
+    deleteCustomer(state, {customer, complete}) {
+        axios.request({
+            method: "delete",
+            url: "/meter/public/api/deleteCustomer/"+customer.id,
+        }).then((response)=> {
+            let responseData = response.data;
+            if (responseData.message == "success") {
+                state.allStaffs = responseData.data;
+            }
+            complete(responseData.message, responseData.data);
+            this.getAllCustomers(state);
+        }).catch((error)=>{
+            complete("error", error);
+        })
+    }
+}
+
+let actions = {
+    deleteCustomer({commit}, {customer, complete}) {
+        let com = ()=> {
+            commit('getAllCustomers', {complete}) 
+        }
+        commit('deleteCustomer', {customer, complete:com})
+    },
+
+    greet() {
+        console.log('hello');
+    },
+
+    saveAction({commit}, {meter, complete=f=>f}) {
+        axios.request( {
+            method: "post",
+            url: "/meter/public/api/updateMeter",
+            data: meter
+        }).then((response)=> {
+            Vue.$emit('editComplete')
+            console.log( response );
+            complete(response);
+        }).catch((error)=>{
+            console.log(error);
+            complete(error);
+        })
     }
 }
 
 export default new Vuex.Store({
     state: state,
-    mutations: mutations
+    mutations: mutations,
+    actions: actions
 })

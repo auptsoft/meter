@@ -17,6 +17,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="{{ asset('css/fa/css/all.css')}}" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
@@ -74,6 +75,16 @@
                             <li class="{{Route::currentRouteName()==='vouchers' ? 'nav-item-active':'nav-item'}}">
                                     <a class="nav-link" href="{{ route('vouchers')  }}">{{ __('Vouchers') }}</a>
                             </li> 
+                            @endif
+                            @if(Auth::user()->can('createCustomer', App\User::class))
+                                <li class="{{Route::currentRouteName()==='customers' ? 'nav-item-active':'nav-item'}}">
+                                    <a class="nav-link" href="{{ route('customers')  }}">{{ __('Customers') }}</a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->can('createCustomer', App\User::class))
+                                <li class="{{Route::currentRouteName()==='staffs' ? 'nav-item-active':'nav-item'}}">
+                                    <a class="nav-link" href="{{ route('staffs')  }}">{{ __('Staffs') }}</a>
+                                </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Meter;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -54,7 +55,7 @@ class UserController extends Controller
 
         $roleUser->save();
 
-        return redirect('/home');
+        return redirect('/customers');
     }
 
     public function storeStaff(Request $request) {
@@ -84,7 +85,7 @@ class UserController extends Controller
 
         $roleUser->save();
 
-        return redirect('/home');
+        return redirect('/staffs');
     }
 
     public function meter() {
@@ -93,5 +94,31 @@ class UserController extends Controller
         } else {
             return redirect('all_meters');
         }   
+    }
+
+    public function allCustomers() {
+        return view('customers');
+    }
+
+    public function allStaffs() {
+        return view('staffs');
+    }
+
+    public function api_allCustomers() {
+        //return "hello";
+        return Utility::generalResponse('success', Role::find(3)->users()->get());
+    }
+    public function api_allStaffs() {
+        return Role::find(2)->users();
+    }
+
+    public function deleteCustomer($id) {
+        $customer = User::find($id);
+        if($customer) {
+            $customer->delete();
+            return Utility::generalResponse("success", "Customer deleted successfully");
+        } else {
+            return Utility::generalResponse("failed", "Customer not found");
+        }
     }
 }

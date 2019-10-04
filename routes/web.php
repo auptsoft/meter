@@ -109,3 +109,6 @@ Route::post('/generateVoucher', 'VoucherController@generate')->name('generateVou
 Route::post('/deleteVoucher', 'VoucherController@deleteVoucher')->name('deleteVoucher')->middleware('can:viewAll, App\Meter');
 
 Route::get('/settings', 'SettingsController@showPage')->name('settings')->middleware('can:viewAll, App\Meter');
+
+Route::get('/customers', 'UserController@allCustomers')->name('customers');
+Route::get('/staffs', 'UserController@allStaffs')->name('staffs');

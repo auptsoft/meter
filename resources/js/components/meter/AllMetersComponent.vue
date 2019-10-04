@@ -9,15 +9,16 @@
 							</p>
 						</div>
 						<div class="col-md-4">
-						  <div class="search-container">
+						  <!-- <div class="search-container">
 							  <form method="POST">
 								  <input class="search-input" type="text" name="query" placeholder="Meter name, number, or address" />
 								  <button class="search-btn" type="submit" >Search</button>
 							  </form>
-							</div>
+						  </div> -->
 						</div>
 					</div>
         </div>
+        <hr />
         <meter-list-component :meters="meters"> </meter-list-component>
     </div>
 </template>
@@ -44,6 +45,7 @@ export default {
     },
 
     mounted() {
+        this.getAllMeters();
         setInterval(this.getAllMeters, 4000);
     },
 

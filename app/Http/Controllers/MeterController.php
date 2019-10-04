@@ -180,4 +180,35 @@ class MeterController extends Controller
 
         return ["message"=>"success"];
     }
+
+    public function updateMeter(Request $request) {
+        
+        $id = $request->input('id');
+        $meter_name = $request->input('name');
+        $meter_number = $request->input('meter_number');
+        $designation = $request->input('designation');
+        $capacity = $request->input('capacity');
+        $rated_current = $request->input('rated_current');
+
+        if(!$id) return Utility::generalResponse("failed", "No id in posted data");
+
+        $meter = Meter::find($id);
+        if ($meter) {
+            $meter->name = $meter_name;
+            $meter->meter_number = $meter_number;
+            $meter->designation = $designation;
+            $meter->capacity = $capacity;
+            $meter->rated_current = $rated_current;
+//return $meter;
+            $meter->save();
+
+            $mrC = new MeterRequestController();
+            $mrC->assignCurrentCommand($meter->id, $rated_current);
+            
+            return Utility::generalResponse("success", $meter);
+
+        } else {
+            return Utility::generalResponse("failed", "meter not found");
+        }
+    }
 }

@@ -74,3 +74,10 @@ Route::get('/test', function(Request $request){
 });
 
 Route::get('/meter/queueOnOff/{id}/{onOff}', "MeterRequestController@shutdownCommand");
+
+Route::get('/all_customers', 'UserController@api_allCustomers');
+Route::get('/all_staffs', 'UserController@api_allStaffs');
+
+Route::delete('/deleteCustomer/{id}', 'UserController@deleteCustomer');
+
+Route::post('/updateMeter', 'MeterController@updateMeter');

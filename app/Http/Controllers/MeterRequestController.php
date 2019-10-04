@@ -43,6 +43,19 @@ class MeterRequestController extends Controller
         }
     }
 
+    public function assignCurrentCommand($meter_id, $new_current) {
+        $meter = Meter::find($meter_id);
+        if($meter) {
+            $degn = $meter->designation;
+            $d = MeterRequestController::appendZeros($degn."", 5);
+            $nc = MeterRequestController::appendZeros("".$new_current, 2);
+            $cmd = "00#".$d."#A#".$nc;
+            return MeterRequestController::queueCommand($meter_id, $cmd);
+        } else {
+            return ["message"=>"failed", "data"=>"meter not found"];
+        }
+    }
+
     public function destroy($id)
     {
         $mr = new MeterRequest;

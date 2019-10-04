@@ -1,9 +1,11 @@
 <template>
     <div>
         <div class="">
-			<a :href="'meter/'+meter.id">
+			
 			<div class="meter-item card">
-				<h4  class="meter-item-title">{{ meter.name}}</h4>
+                <a :href="'meter/'+meter.id">
+				    <h4  class="meter-item-title">{{ meter.name}}</h4>
+                </a>
 				<p>
 					<span class="meter-number">{{ meter.meter_number}}	</span>								
 					<br />
@@ -16,17 +18,32 @@
 				
                 <div> {{ meter.state }} </div>
                 <div>Last updated: {{ meter.lastUpdate }} </div>
-                <a :href="'staff_recharge/'+meter.id">
-  					<button class="btn btn-success btn-sm" >Recharge </button>
-				</a>
+                <center> 
+                    <a :href="'staff_recharge/'+meter.id">
+  				    	<button class="btn btn-success btn-sm" >Recharge </button>
+				    </a>
+                    <mdb-btn @click="showModal=true" size="sm" icon="pen"> Edit </mdb-btn>
+                    <mdb-modal :show="showModal" @close="showModal = false"  class="text-left">
+                        <mdb-modal-header class="modal-header ">
+                          <h4 class="title"><mdb-icon icon="map-signs" /> Edit Meter </h4>
+                        </mdb-modal-header>
+                        <mdb-modal-body class="grey-text">
+                           <meter-form @editComplete="showModal=false" :meter="meter"> </meter-form>
+                        </mdb-modal-body>
+                    </mdb-modal>
+                </center>
 			</div>
-			</a>
 		</div>
     </div>
 </template>
 
 <script>
+import MeterForm from "./MeterForm";
 export default {
+    components: {
+        MeterForm,
+    },
+
     props: [
         "meter"
     ],
@@ -34,6 +51,8 @@ export default {
     data() {
         return {
             meterStatus: "",
+
+            showModal: false,
         }
     },
 
@@ -60,6 +79,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.modal-header {
 
+}
 </style>
 
