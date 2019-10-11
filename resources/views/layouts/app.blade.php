@@ -81,11 +81,11 @@
                                     <a class="nav-link" href="{{ route('customers')  }}">{{ __('Customers') }}</a>
                                 </li>
                             @endif
-                            @if(Auth::user()->can('createCustomer', App\User::class))
+                            {{-- @if(Auth::user()->can('createCustomer', App\User::class))
                                 <li class="{{Route::currentRouteName()==='staffs' ? 'nav-item-active':'nav-item'}}">
                                     <a class="nav-link" href="{{ route('staffs')  }}">{{ __('Staffs') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

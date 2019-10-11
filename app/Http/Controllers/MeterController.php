@@ -9,6 +9,9 @@ use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+/***
+ * MeterController 
+ */
 class MeterController extends Controller
 {
     /**

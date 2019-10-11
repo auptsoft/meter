@@ -85,7 +85,7 @@ class PowerConsumedController extends Controller
 
             //$dt = new DateTime($meter->created_at);
         
-            //return $powerConsumed;
+            //return $powerConsumed..;
             return $values->average();
         }
     }

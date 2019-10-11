@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\MeterRequest;
 use App\Meter;
 
+/***
+ * Meter Request controller
+ */
 class MeterRequestController extends Controller
 {
 

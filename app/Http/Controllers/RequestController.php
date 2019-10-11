@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\PowerConsumed;
 use GuzzleHttp\Client as Guzzle;
 
+/*Request Controller */
 class RequestController extends Controller
 {
 

@@ -34,7 +34,7 @@ export default {
             if(reason == 0) {
                 return this.meter.state;
             } else if (reason == 1) {
-               return "Meter shutdown. METER TAMPERED. Contact base station to turn on your meter";
+               return "Meter shutdown... METER TAMPERED. Contact base station to turn on your meter";
             }/*else if (reason == 3) {
                 return "Current phase down. Kindly use App to change phase";
             }*/ else if (reason == 4) {
