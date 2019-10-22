@@ -14,6 +14,11 @@ use Illuminate\Http\Request;
  */
 class MeterController extends Controller
 {
+
+    public function load_balancing(){
+        return view("load_balancing");
+    }
+
     /**
      * Display a listing of the resource.
      *

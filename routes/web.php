@@ -112,3 +112,5 @@ Route::get('/settings', 'SettingsController@showPage')->name('settings')->middle
 
 Route::get('/customers', 'UserController@allCustomers')->name('customers');
 Route::get('/staffs', 'UserController@allStaffs')->name('staffs');
+
+Route::get("/load_balancing", "MeterController@load_balancing")->name("load_balancing");

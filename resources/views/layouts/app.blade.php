@@ -72,6 +72,9 @@
                             <li class="{{Route::currentRouteName()==='all_meters' ? 'nav-item-active':'nav-item'}}">
                                     <a class="nav-link" href="{{ route('all_meters') }}">{{ __('All meters') }}</a>
                             </li> 
+                            <li class="{{Route::currentRouteName()==='load_balancing' ? 'nav-item-active':'nav-item'}}">
+                                <a class="nav-link" href="{{ route('load_balancing') }}">{{ __('Load Balancing') }}</a>
+                            </li> 
                             <li class="{{Route::currentRouteName()==='vouchers' ? 'nav-item-active':'nav-item'}}">
                                     <a class="nav-link" href="{{ route('vouchers')  }}">{{ __('Vouchers') }}</a>
                             </li> 
