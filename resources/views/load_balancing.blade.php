@@ -14,7 +14,7 @@
             <center>
               <div class="card">
                 <div class="card-body">
-                    <p style="color:gray"> Load balancing in carried out automatically by the system. </p>
+                    <p style="color:gray"> Load balancing is carried out automatically by the system. </p>
                     <p> Click on the button below to manually initiate load balancing  </p>
                     <center> <button class="btn btn-sm btn-success"> Start Load Balancing </button> </center>
                 </div>
