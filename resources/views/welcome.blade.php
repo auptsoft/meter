@@ -128,7 +128,7 @@
                     {{ config('app.name', 'Metering') }}
                     </div>
                     <div class="links">
-                        <a class="menu-item" href="{{ url('/meter') }}">My Meter</a>
+                        <a class="menu-item" href="{{ url('/meter') }}">Meters</a>
                         <a class="menu-item login-menu" href="{{ url('/login') }}">Dashboard</a>
                         <!-- <a class="menu-item" href="{{ url('/customer_recharge') }}">Recharge</a> -->
                         

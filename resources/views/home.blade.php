@@ -69,6 +69,10 @@
                         <div class="author-details">
                             Name: <b> EDEMIRUKAYE UKEH ORODJE </b>
                             <br />
+                            <i class="fa fa-phone"> </i> +234-8164-633-759
+                            <br />
+                            <i class="fa fa-envelope"></i> edemirukaye.orodje@eng.uniben.edu
+                            <br />
                             Mat. No.: <b>PG/ENG/1208916 </b>
                             <h4> Academic Profile and acheivement </h4>
                              <p> B.Eng (Uniben), M.Eng (Uniben) MIET (UK), COREN Regd, MNSE </p>
@@ -84,24 +88,39 @@
             </div>
         </div>
         <div class="col-md-4">
-        <div class="card" >
-            <div class="card-header">
-                Brief
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                        <div class="sub-item" >
-                        <p> Metering base station dashboard is a HMI (Human Machine Interface) software used to monitor and control all the meter in a distribution system. 
-                            It also manages customer subscription and recharge pins.  </p>
-                         </div>
+            <div class="card" >
+                <div class="card-header">
+                    Brief
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="sub-item" >
+                            <p> Metering base station dashboard is a HMI (Human Machine Interface) software used to monitor and control all the meter in a distribution system. 
+                                It also manages customer subscription and recharge pins.  </p>
+                             </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <hr />
+            <div>
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            Project Supervisor
+                        </div>
+                        <div class="card-body">
+                            <i class="fa fa-phone"> </i> +234-8034-956-812
+                            <br />
+                            <i class="fa fa-envelope"></i> apeh@uniben.edu
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
        
     </div>
